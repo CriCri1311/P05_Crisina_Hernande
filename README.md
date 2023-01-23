@@ -1,4 +1,4 @@
-# P05_Crisina_Hernande<
+# P05_Crisina_Hernandez
 Para desplegar aplicacviones web con Docker primero debemos crear las carpetas de ncada aplicacion (Adminer, Apache, Mediawiki, Guestbook y Wordpress)
 Luego en cada carpeta debemps incluir un fichero de texto llamado docker-compose.yml 
 Ahora especificaremos como lanzar cada aplicación:
