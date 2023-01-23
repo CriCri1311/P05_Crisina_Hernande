@@ -1,4 +1,4 @@
-Para desplegar aplicacviones web con Docker primero debemos crear las carpetas de ncada aplicacion (Adminer, Apache, Mediawiki, Guestbook y Wordpress)
+Para desplegar aplicaciones web con Docker primero debemos crear las carpetas de ncada aplicacion (Adminer, Apache, Mediawiki, Guestbook y Wordpress)
 Luego en cada carpeta debemps incluir un fichero de texto llamado docker-compose.yml 
 Ahora especificaremos como lanzar cada aplicación:
 
@@ -38,14 +38,16 @@ volumes:
   images:
   db:
 ```
-En la consola: docker-compose -f docker-compose.yml up  
-Empezamos el setup y pegamos el IPADRESS, que encontramos en mariadb en mi caso 172.17.0.2, en el servidor de la base de datos.  
-En nombre de usuario de la base de datos ponemos wikiuser y en contraseña example. 
-Pegamos LOCALSETTINGS.PHP en la carpeta mediawiki donde tenemos el archivo .YML y en consola ponemos docker cp .\LocalSettings.php mediawiki_mediawiki_1:/var/www/html  
-Paramos con docker-compose stop y descomentamos la linea: - ./LocalSettings.php:/var/www/html/LocalSettings.php en el .YML. Después volvemos a hacer docker-compose -f docker-compose.yml up
+
+Esto es lo que debemos escribir en el fichero YAML/YML
+Nos ubicamos en la carpeta mediawiki y metemos el siguiente comando
+docker-compose up -d
+Con esto ya hemos desplegado la aplicación y loo podremos ver en localhost:**** y el puerto que hemos puesto.
+
+
 
 ## WORDPRESS
-https://hub.docker.com/_/wordpress
+https://aulasoftwarelibre.github.io/taller-de-docker/docker-compose/
 
 ```
 version: '3.1'
@@ -80,9 +82,16 @@ volumes:
   wordpress:
   db:
 ```
-docker-compose -f docker-compose.yml up
+Esto es lo que debemos escribir en el fichero YAML/YML
+Nos ubicamos en la carpeta wordpress y metemos el siguiente comando
+docker-compose up -d
+Con esto ya hemos desplegado la aplicación y loo podremos ver en localhost:**** y el puerto que hemos puesto.
+
+
+
 
 ## ADMINER
+
 https://hub.docker.com/_/adminer
 ```
 version: '3.1'
@@ -101,13 +110,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example
 ```
-docker-compose -f docker-compose.yml up
-
-Para acceder en el navegador:
-- USUARIO: root
-- CONTRASEÑA: example
+Esto es lo que debemos escribir en el fichero YAML/YML
+Nos ubicamos en la carpeta adminer y metemos el siguiente comando
+docker-compose up -d
+Con esto ya hemos desplegado la aplicación y loo podremos ver en localhost:**** y el puerto que hemos puesto.
 
 ## GUESTBOOK
+
 https://iesgn.github.io/curso_docker_2021/sesion5/guestbook.html
 
 ```
@@ -124,10 +133,19 @@ services:
     image: redis
     restart: always
 ```
-docker-compose -f docker-compose.yml up
+
+
+
+Esto es lo que debemos escribir en el fichero YAML/YML
+Nos ubicamos en la carpeta guestbook y metemos el siguiente comando
+docker-compose up -d
+Con esto ya hemos desplegado la aplicación y loo podremos ver en localhost:**** y el puerto que hemos puesto.
+
+
+
 
 ## APACHE
-https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Simple-Apache-docker-compose-example-with-Dockers-httpd-image
+https://www.foc.es/2021/10/06/6219-borrador-automatico-4.html
 ```
 version: '3.9'
 services:
@@ -139,4 +157,7 @@ services:
     volumes:
     - ./website:/usr/local/apache2/htdocs
 ```
-docker-compose -f docker-compose.yml up
+Esto es lo que debemos escribir en el fichero YAML/YML
+Nos ubicamos en la carpeta apache y metemos el siguiente comando
+docker-compose up -d
+Con esto ya hemos desplegado la aplicación y loo podremos ver en localhost:**** y el puerto que hemos puesto.
